@@ -10,28 +10,28 @@ const styles = StyleSheet.create({
     padding: 15,
     flexDirection: 'row',
     gap: 5,
+    justifyContent: 'space-evenly',
     flexGrow: 1
+
   },
 });
 
 const AppBar = () => {
   return (
-    <ScrollView horizontal contentContainerStyle={{ flex: 1 }}>
-      <View style={styles.container}>
+    <ScrollView horizontal contentContainerStyle={styles.container}>
 
-        <Link to="/" >
-          <Text fontSize="subheading" fontWeight="bold" color="light">
-            Repositories
-          </Text>
-        </Link>
+      <Link to="/" >
+        <Text fontSize="subheading" fontWeight="bold" color="light">
+          Repositories
+        </Text>
+      </Link>
 
-        <Link to="/login">
-          <Text fontSize="subheading" fontWeight="bold" color="light">
-            Login
-          </Text>
-        </Link>
+      <Link to="/login">
+        <Text fontSize="subheading" fontWeight="bold" color="light">
+          Login
+        </Text>
+      </Link>
 
-      </View >
     </ScrollView>
   )
 

@@ -16,19 +16,24 @@ const SignIn = () => {
     },
   });
 
-  return <View>
+  return <View style={{ display: 'flex', gap: 5 }}>
     <TextInput
       placeholder="username"
       value={formik.values.username}
       onChangeText={formik.handleChange('username')}
+      style={{ borderColor: 'black', borderRadius: 5, width: 400 }}
     />
     <TextInput
       placeholder="password"
       value={formik.values.password}
       onChangeText={formik.handleChange('password')}
+      style={{ borderColor: 'black', borderRadius: 5, width: 400 }}
+      secureTextEntry
     />
     <Pressable onPress={formik.handleSubmit}>
-      <Text>Login</Text>
+      <Text color="light" style={{ backgroundColor: 'blue', borderRadius: 5, padding: 5, flexGrow: 0 }}>
+        Login
+      </Text>
     </Pressable>
   </View >
 };
