@@ -19,13 +19,13 @@ const AppBar = () => {
     <ScrollView horizontal contentContainerStyle={{ flex: 1 }}>
       <View style={styles.container}>
 
-        <Link to="/" style={{ flexGrow: 1 }}>
+        <Link to="/" >
           <Text fontSize="subheading" fontWeight="bold" color="light">
             Repositories
           </Text>
         </Link>
 
-        <Link to="/login" style={{ flexGrow: 1 }}>
+        <Link to="/login">
           <Text fontSize="subheading" fontWeight="bold" color="light">
             Login
           </Text>
