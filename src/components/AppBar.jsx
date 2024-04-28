@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
     padding: 15,
     flexDirection: 'row',
-    gap: 5
+    gap: 5,
+    flexGrow: 1
   },
 });
 
