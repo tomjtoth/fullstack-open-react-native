@@ -1,4 +1,4 @@
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { Link, } from 'react-router-native';
 import Constants from 'expo-constants';
 import Text from './Text';
@@ -14,19 +14,26 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-  return <View style={styles.container}>
-    <Link to="/">
-      <Text fontSize="subheading" fontWeight="bold" color="light">
-        Repositories
-      </Text>
-    </Link>
+  return (
+    <ScrollView horizontal contentContainerStyle={{ flex: 1 }}>
+      <View style={styles.container}>
 
-    <Link to="/login">
-      <Text fontSize="subheading" fontWeight="bold" color="light">
-        Login
-      </Text>
-    </Link>
-  </View >
+        <Link to="/" style={{ flexGrow: 1 }}>
+          <Text fontSize="subheading" fontWeight="bold" color="light">
+            Repositories
+          </Text>
+        </Link>
+
+        <Link to="/login" style={{ flexGrow: 1 }}>
+          <Text fontSize="subheading" fontWeight="bold" color="light">
+            Login
+          </Text>
+        </Link>
+
+      </View >
+    </ScrollView>
+  )
+
 };
 
 export default AppBar;
