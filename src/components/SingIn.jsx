@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { TextInput, Pressable, View, StyleSheet } from 'react-native';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
+import useSignIn from '../hooks/useSignIn';
 import Text from './Text';
 
 const sx = StyleSheet.create({
@@ -9,15 +11,21 @@ const sx = StyleSheet.create({
 })
 
 const SignIn = () => {
+  const [signIn] = useSignIn();
+
   const formik = useFormik({
     initialValues: {
       username: '',
       password: ''
     },
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       const { username, password } = values;
-
-      console.log(`"${username}:${password}" logged in`)
+      try {
+        const { data } = await signIn({ username, password });
+        console.log(data);
+      } catch (e) {
+        console.log(e);
+      }
     },
     validationSchema: yup.object().shape({
       username: yup.string().required('Username is required'),
