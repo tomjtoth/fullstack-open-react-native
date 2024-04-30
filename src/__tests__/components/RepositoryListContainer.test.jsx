@@ -1,6 +1,5 @@
-import { Text, View } from 'react-native';
 import { render, screen } from '@testing-library/react-native';
-import RepositoryListContainer from '../../components/RepositoryListContainer'
+import RepositoryListContainer from '../../components/RepositoryList/Container'
 
 const repositories = [
   {

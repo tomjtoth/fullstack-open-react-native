@@ -1,5 +1,5 @@
 import { View, Image, StyleSheet } from "react-native"
-import Text from "./Text";
+import Text from "../Text";
 
 const num = (x) => x <= 1000 ? x : `${(x / 1000).toFixed(1)}k`;
 
