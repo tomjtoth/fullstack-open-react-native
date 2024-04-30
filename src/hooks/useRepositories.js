@@ -4,7 +4,7 @@ import { GET_REPOSITORIES } from '../graphql/queries'
 
 
 const useRepositories = () => {
-  const [repositories, setRepositories] = useState();
+  const [repositories, setRepositories] = useState([]);
 
   const qry = useQuery(GET_REPOSITORIES, {
     fetchPolicy: 'cache-and-network',
@@ -15,7 +15,7 @@ const useRepositories = () => {
     if (qry.data) {
       if (qry.data.repositories === null) return;
 
-      setRepositories(qry.data.repositories)
+      setRepositories(qry.data.repositories.edges.map(edge => edge.node))
     }
   }, [qry.data])
 
