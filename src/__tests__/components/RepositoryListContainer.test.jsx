@@ -49,11 +49,9 @@ const repositories = [
 ];
 
 describe('RepoListContainer', () => {
-  it('renders 1st item well', () => {
+  it('renders 1st item properly', () => {
 
     render(<RepositoryListContainer repositories={repositories} />);
-
-    screen.debug();
 
     const [first] = screen.getAllByTestId('repositoryItem');
 

@@ -22,8 +22,8 @@ const SignInForm = ({ onSubmit }) => {
     })
   });
 
-  return <View testID="signInForm" style={{ display: 'flex', gap: 5, margin: 15 }
-  } >
+  return <View style={{ display: 'flex', gap: 5, margin: 15 }} >
+
     <TextInput
       placeholder="username"
       placeholderTextColor="lightgray"
@@ -59,6 +59,7 @@ const SignInForm = ({ onSubmit }) => {
         Sign In
       </Text>
     </Pressable>
+
   </View >
 }
 
