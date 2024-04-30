@@ -38,10 +38,10 @@ const RepositoryItem = ({ item: {
   ratingAverage,
   stargazersCount,
   forksCount,
-} }) => <View style={sx.flexbox}>
+} }) => <View style={sx.flexbox} testID="repositoryItem">
     <Row>
       <Image style={{ borderRadius: 5, flexGrow: 0, width: 50, height: 50 }} source={{ uri: ownerAvatarUrl }} />
-      <Col >
+      <Col>
         <Text fontWeight="bold">{fullName}</Text>
         <Text color="textSecondary">{description}</Text>
         <Row style={{ justifyContent: 'flex-start' }}>
@@ -50,19 +50,19 @@ const RepositoryItem = ({ item: {
       </Col>
     </Row>
     <Row>
-      <Col >
+      <Col>
         <Text fontWeight="bold">{num(stargazersCount)}</Text>
         <Text color="textSecondary">Stars</Text>
       </Col>
-      <Col >
+      <Col>
         <Text fontWeight="bold">{num(forksCount)}</Text>
         <Text color="textSecondary">Forks</Text>
       </Col>
-      <Col >
+      <Col>
         <Text fontWeight="bold">{num(reviewCount)}</Text>
         <Text color="textSecondary">Reviews</Text>
       </Col>
-      <Col >
+      <Col>
         <Text fontWeight="bold">{num(ratingAverage)}</Text>
         <Text color="textSecondary">Ratings</Text>
       </Col>
