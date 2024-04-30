@@ -1,6 +1,11 @@
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { useContext, useEffect, useState } from 'react';
+import { Pressable, StyleSheet, ScrollView } from 'react-native';
 import { Link, } from 'react-router-native';
 import Constants from 'expo-constants';
+import { useQuery, useApolloClient } from '@apollo/client'
+import { GET_ME } from '../graphql/queries';
+
+import AuthStorageContext from '../contexts/AuthStorageContext';
 import Text from './Text';
 
 const styles = StyleSheet.create({
@@ -17,6 +22,29 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const client = useApolloClient();
+
+  const authStorage = useContext(AuthStorageContext);
+
+  const qry = useQuery(GET_ME);
+
+  useEffect(() => {
+    if (qry.data) {
+      if (qry.data.me === null) {
+        setLoggedIn(false);
+        return;
+      }
+
+      setLoggedIn(true);
+    }
+  }, [qry.data])
+
+  const handleLogout = async () => {
+    await authStorage.removeAccessToken();
+    client.resetStore();
+  }
+
   return (
     <ScrollView horizontal contentContainerStyle={styles.container}>
 
@@ -26,12 +54,21 @@ const AppBar = () => {
         </Text>
       </Link>
 
-      <Link to="/login">
-        <Text fontSize="subheading" fontWeight="bold" color="light">
-          Login
-        </Text>
-      </Link>
+      {!loggedIn
 
+        ? <Link to="/login">
+          <Text fontSize="subheading" fontWeight="bold" color="light">
+            Sign In
+          </Text>
+        </Link>
+
+        : <Pressable onPress={handleLogout}>
+          <Text fontSize="subheading" fontWeight="bold" color="light">
+            Sign Out
+          </Text>
+        </Pressable>
+
+      }
     </ScrollView>
   )
 

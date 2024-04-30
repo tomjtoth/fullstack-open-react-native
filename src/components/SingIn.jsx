@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { TextInput, Pressable, View, StyleSheet } from 'react-native';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
@@ -18,14 +17,10 @@ const SignIn = () => {
       username: '',
       password: ''
     },
-    onSubmit: async (values) => {
-      const { username, password } = values;
-      try {
-        const { data } = await signIn({ username, password });
-        console.log(data);
-      } catch (e) {
-        console.log(e);
-      }
+    onSubmit: ({ username, password }) => {
+      signIn({ username, password })
+        .then(({ data }) => console.log(data))
+        .catch(e => console.error(e))
     },
     validationSchema: yup.object().shape({
       username: yup.string().required('Username is required'),
