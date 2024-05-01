@@ -15,8 +15,11 @@ const styles = StyleSheet.create({
   colorPrimary: {
     color: theme.colors.primary,
   },
-  colorLight: {
-    color: theme.colors.light,
+  colorWhite: {
+    color: theme.colors.white,
+  },
+  bgColorBlue: {
+    backgroundColor: theme.colors.blue
   },
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,
@@ -24,14 +27,24 @@ const styles = StyleSheet.create({
   fontWeightBold: {
     fontWeight: theme.fontWeights.bold,
   },
+  button: {
+    borderRadius: 5,
+    padding: 5,
+  },
+  centered: {
+    textAlign: 'center'
+  }
 });
 
-const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
+const Text = ({ color, bgColor, centered, button, fontSize, fontWeight, style, ...props }) => {
   const textStyle = [
     styles.text,
     color === 'textSecondary' && styles.colorTextSecondary,
     color === 'primary' && styles.colorPrimary,
-    color === 'light' && styles.colorLight,
+    color === 'white' && styles.colorWhite,
+    bgColor === 'blue' && styles.bgColorBlue,
+    button && styles.button,
+    centered && styles.centered,
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
     style,

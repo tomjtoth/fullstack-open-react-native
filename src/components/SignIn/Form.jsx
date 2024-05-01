@@ -53,8 +53,8 @@ const SignInForm = ({ onSubmit }) => {
       !formik.errors.password &&
       !formik.errors.username &&
       formik.handleSubmit(e)}>
-      <Text color="light" style={{
-        textAlign: 'center', backgroundColor: 'blue', borderRadius: 5, padding: 15, flexGrow: 0
+      <Text color="white" bgColor="blue" button centered style={{
+        padding: 15, flexGrow: 0
       }}>
         Sign In
       </Text>

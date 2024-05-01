@@ -49,7 +49,7 @@ const AppBar = () => {
     <ScrollView horizontal contentContainerStyle={styles.container}>
 
       <Link to="/" >
-        <Text fontSize="subheading" fontWeight="bold" color="light">
+        <Text fontSize="subheading" fontWeight="bold" color="white">
           Repositories
         </Text>
       </Link>
@@ -57,13 +57,13 @@ const AppBar = () => {
       {!loggedIn
 
         ? <Link to="/login">
-          <Text fontSize="subheading" fontWeight="bold" color="light">
+          <Text fontSize="subheading" fontWeight="bold" color="white">
             Sign In
           </Text>
         </Link>
 
         : <Pressable onPress={handleLogout}>
-          <Text fontSize="subheading" fontWeight="bold" color="light">
+          <Text fontSize="subheading" fontWeight="bold" color="white">
             Sign Out
           </Text>
         </Pressable>

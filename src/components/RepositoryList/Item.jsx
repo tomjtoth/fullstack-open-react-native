@@ -45,26 +45,26 @@ const RepositoryItem = ({ item: {
         <Text fontWeight="bold">{fullName}</Text>
         <Text color="textSecondary">{description}</Text>
         <Row style={{ justifyContent: 'flex-start' }}>
-          <Text color="light" style={{ backgroundColor: 'blue', borderRadius: 5, padding: 5, flexGrow: 0 }}>{language}</Text>
+          <Text color="white" bgColor="blue" button style={{ flexGrow: 0 }}>{language}</Text>
         </Row>
       </Col>
     </Row>
     <Row>
       <Col>
-        <Text fontWeight="bold">{num(stargazersCount)}</Text>
-        <Text color="textSecondary">Stars</Text>
+        <Text centered fontWeight="bold">{num(stargazersCount)}</Text>
+        <Text centered color="textSecondary">Stars</Text>
       </Col>
       <Col>
-        <Text fontWeight="bold">{num(forksCount)}</Text>
-        <Text color="textSecondary">Forks</Text>
+        <Text centered fontWeight="bold">{num(forksCount)}</Text>
+        <Text centered color="textSecondary">Forks</Text>
       </Col>
       <Col>
-        <Text fontWeight="bold">{num(reviewCount)}</Text>
-        <Text color="textSecondary">Reviews</Text>
+        <Text centered fontWeight="bold">{num(reviewCount)}</Text>
+        <Text centered color="textSecondary">Reviews</Text>
       </Col>
       <Col>
-        <Text fontWeight="bold">{num(ratingAverage)}</Text>
-        <Text color="textSecondary">Ratings</Text>
+        <Text centered fontWeight="bold">{num(ratingAverage)}</Text>
+        <Text centered color="textSecondary">Ratings</Text>
       </Col>
     </Row>
   </View>
