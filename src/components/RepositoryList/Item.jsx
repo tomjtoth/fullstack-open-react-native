@@ -1,5 +1,7 @@
 import { Linking, Pressable, View, Image, StyleSheet } from "react-native"
 import Text from "../Text";
+import Row from "./Row";
+import Col from "./Col";
 
 const num = (x) => x <= 1000 ? x : `${(x / 1000).toFixed(1)}k`;
 
@@ -8,26 +10,8 @@ const sx = StyleSheet.create({
     display: 'flex',
     rowGap: 15,
     padding: 15
-  },
-  row: {
-    flexDirection: "row",
-    justifyContent: 'space-evenly',
-    flexGrow: 1,
-    gap: 10
-  },
-  col: {
-    flexGrow: 1,
-    gap: 5,
   }
 });
-
-const Row = ({ style, children }) => (
-  <View style={[sx.row, style]}>{children}</View>
-)
-
-const Col = ({ style, children }) => (
-  <View style={[sx.col, style]}>{children}</View>
-)
 
 const RepositoryItem = ({ showButton = false, item: {
   ownerAvatarUrl,

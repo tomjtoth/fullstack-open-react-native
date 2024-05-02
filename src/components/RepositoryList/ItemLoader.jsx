@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
+import { FlatList } from 'react-native';
 import { useParams } from 'react-router-native'
 import { useQuery } from '@apollo/client'
 
-import RepositoryItem from './Item';
 import { GET_REPO } from '../../graphql/queries';
+import RepositoryItem from './Item';
+import ReviewItem from './ReviewItem';
+import ItemSeparator from './ItemSeparator';
 
 const ItemLoader = () => {
 
@@ -20,7 +23,15 @@ const ItemLoader = () => {
   }, [qry.data])
 
   return repo
-    ? <RepositoryItem item={repo} showButton />
+
+    ? <FlatList
+      data={repo.reviews.edges.map(e => e.node)}
+      ItemSeparatorComponent={ItemSeparator}
+      renderItem={({ item }) => <ReviewItem review={item} />}
+      keyExtractor={({ id }) => id}
+      ListHeaderComponent={() => <RepositoryItem item={repo} showButton />}
+    />
+
     : null
 }
 
