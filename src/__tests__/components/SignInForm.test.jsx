@@ -8,7 +8,6 @@ describe('SignInForm', () => {
     const mockSubmit = jest.fn()
 
     render(<SignInForm onSubmit={mockSubmit} />);
-    screen.debug()
 
     fireEvent.changeText(screen.getByPlaceholderText('username'), 'kalle');
     fireEvent.changeText(screen.getByPlaceholderText('password'), 'password');
