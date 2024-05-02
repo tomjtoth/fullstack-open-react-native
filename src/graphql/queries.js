@@ -22,3 +22,12 @@ export const GET_ME = gql`
     }
   }
 `
+
+export const GET_REPO = gql`
+  query($id: ID!) {
+    repository(id: $id) {
+      ...RepoParts
+    }
+  }
+  ${REPO_PARTS}
+`

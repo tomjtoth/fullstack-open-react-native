@@ -12,5 +12,6 @@ export const REPO_PARTS = gql`
     reviewCount
     ratingAverage
     stargazersCount
+    url
   }
 `

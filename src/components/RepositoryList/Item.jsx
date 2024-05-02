@@ -1,4 +1,4 @@
-import { View, Image, StyleSheet } from "react-native"
+import { Linking, Pressable, View, Image, StyleSheet } from "react-native"
 import Text from "../Text";
 
 const num = (x) => x <= 1000 ? x : `${(x / 1000).toFixed(1)}k`;
@@ -29,7 +29,7 @@ const Col = ({ style, children }) => (
   <View style={[sx.col, style]}>{children}</View>
 )
 
-const RepositoryItem = ({ item: {
+const RepositoryItem = ({ showButton = false, item: {
   ownerAvatarUrl,
   fullName,
   description,
@@ -38,7 +38,10 @@ const RepositoryItem = ({ item: {
   ratingAverage,
   stargazersCount,
   forksCount,
-} }) => <View style={sx.flexbox} testID="repositoryItem">
+  url
+} }) => {
+
+  return <View style={sx.flexbox} testID="repositoryItem">
     <Row>
       <Image style={{ borderRadius: 5, flexGrow: 0, width: 50, height: 50 }} source={{ uri: ownerAvatarUrl }} />
       <Col>
@@ -67,7 +70,15 @@ const RepositoryItem = ({ item: {
         <Text centered color="textSecondary">Ratings</Text>
       </Col>
     </Row>
+    {showButton &&
+      <Pressable onPress={() => Linking.openURL(url)}>
+        <Text bgColor="blue" color="white" button centered fontSize="subheading">
+          open in GitHub
+        </Text>
+      </Pressable>
+    }
   </View>
+}
 
 
 export default RepositoryItem
