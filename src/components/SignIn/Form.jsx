@@ -50,9 +50,13 @@ const SignInForm = ({ onSubmit }) => {
     )}
 
     <Pressable onPress={(e) =>
+
       !formik.errors.password &&
       !formik.errors.username &&
-      formik.handleSubmit(e)}>
+
+      formik.handleSubmit(e)
+
+    }>
       <Text color="white" bgColor="blue" button centered style={{
         padding: 15, flexGrow: 0
       }}>

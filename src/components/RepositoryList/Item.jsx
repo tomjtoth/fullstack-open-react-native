@@ -1,7 +1,7 @@
 import { Linking, Pressable, View, Image, StyleSheet } from "react-native"
 import Text from "../Text";
-import Row from "./Row";
-import Col from "./Col";
+import Row from "../Row";
+import Col from "../Col";
 
 const num = (x) => x <= 1000 ? x : `${(x / 1000).toFixed(1)}k`;
 

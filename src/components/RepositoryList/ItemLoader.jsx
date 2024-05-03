@@ -5,14 +5,17 @@ import { useQuery } from '@apollo/client'
 
 import { GET_REPO } from '../../graphql/queries';
 import RepositoryItem from './Item';
-import ReviewItem from './ReviewItem';
-import ItemSeparator from './ItemSeparator';
+import ReviewItem from '../Review/Item';
+import ItemSeparator from '../ItemSeparator';
 
 const ItemLoader = () => {
 
   const [repo, setRepo] = useState(null);
   const { repoId } = useParams()
-  const qry = useQuery(GET_REPO, { variables: { id: repoId } });
+  const qry = useQuery(GET_REPO, {
+    variables: { id: repoId },
+    fetchPolicy: 'cache-and-network',
+  });
 
   useEffect(() => {
     if (qry.data) {

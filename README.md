@@ -2,6 +2,10 @@
 
 HY:n kurssin fullstack-open [osan 10](https://fullstackopen.com/en/part10/) palautusrepo.
 
+## Huomautus
+
+Selaimesta aika paljon asia näyttää olevalta rikki, Expo App:in kautta kuitenkin näyttää hyvältä `OnePlus Nord CE2` :ssa.
+
 ## Vinkki
 
 Itse siirryin monen langattoman verkoston välillä kurssin tän osan suorituksen aikana, vetämättä uusia riippuvuuksia tuli tää override tolle `APOLLO_URI` :lle:

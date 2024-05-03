@@ -1,12 +1,12 @@
 import { format } from "date-fns";
 import { View } from "react-native"
 import Text from "../Text"
-import Row from './Row'
-import Col from './Col'
+import Row from '../Row'
+import Col from '../Col'
 
 const ReviewItem = ({ review: { text, rating, createdAt, user: { username } } }) => {
   return <View style={{ padding: 5 }}>
-    <Row >
+    <Row>
       <View style={{
         width: 40,
         height: 40,

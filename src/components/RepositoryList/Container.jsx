@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-native'
 import { FlatList, Pressable } from 'react-native';
 import RepositoryItem from './Item';
-import ItemSeparator from './ItemSeparator';
+import ItemSeparator from '../ItemSeparator';
 
 const RepositoryListContainer = ({ repositories }) => {
 

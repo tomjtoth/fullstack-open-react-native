@@ -4,7 +4,8 @@ const sx = StyleSheet.create({
   row: {
     flexDirection: "row",
     justifyContent: 'space-evenly',
-    flexGrow: 1,
+    flex: 1,
+    flexWrap: 'wrap',
     gap: 10
   },
 });
