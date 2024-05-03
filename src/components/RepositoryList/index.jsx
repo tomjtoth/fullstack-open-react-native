@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDebounce } from 'use-debounce';
 import useRepositories from '../../hooks/useRepositories';
 import RepositoryListContainer from './Container';
 import { Picker } from '@react-native-picker/picker';
+import { TextInput } from 'react-native';
+
+let debounceMyAss = 0;
 
 const RepositoryList = () => {
 
   const [crit, setCrit] = useState('CREATED_AT');
   const [dir, setDir] = useState('ASC');
   const [picker, setPicker] = useState('latest');
+  const [filter, setFilter] = useState('');
+  const [value] = useDebounce(filter, 1000);
 
-  const { repositories } = useRepositories(crit, dir);
+  const { repositories } = useRepositories(crit, dir, value);
 
   return <>
+
+    <TextInput
+      placeholder="filter by name"
+      placeholderTextColor="lightgray"
+      value={filter}
+      onChangeText={(txt) => setFilter(txt)}
+    />
 
     <Picker
       selectedValue={picker}
