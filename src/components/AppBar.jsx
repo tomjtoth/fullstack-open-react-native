@@ -56,11 +56,19 @@ const AppBar = () => {
 
       {!loggedIn
 
-        ? <Link to="/login">
-          <Text fontSize="subheading" fontWeight="bold" color="white">
-            Sign In
-          </Text>
-        </Link>
+        ? <>
+          <Link to="/login">
+            <Text fontSize="subheading" fontWeight="bold" color="white">
+              Sign In
+            </Text>
+          </Link>
+
+          <Link to="/register">
+            <Text fontSize="subheading" fontWeight="bold" color="white">
+              Sign Up
+            </Text>
+          </Link>
+        </>
 
         : <>
           <Link to="/create-review" >

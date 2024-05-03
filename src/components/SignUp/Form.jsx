@@ -8,17 +8,23 @@ const sx = StyleSheet.create({
   textInput: { borderColor: 'black', borderRadius: 5, padding: 15, borderWidth: 1 }
 })
 
-const SignInForm = ({ onSubmit }) => {
+const Form = ({ onSubmit }) => {
 
   const formik = useFormik({
     initialValues: {
       username: '',
-      password: ''
+      password: '',
+      passConf: ''
     },
     onSubmit,
     validationSchema: yup.object().shape({
-      username: yup.string().required('Username is required'),
-      password: yup.string().required('Password is required'),
+      username: yup.string().required('Username is required')
+        .min(5).max(30),
+      password: yup.string().required('Password is required')
+        .min(5).max(50),
+      passConf: yup.string()
+        .oneOf([yup.ref('password'), null])
+        .required('Password confirmation is required'),
     })
   });
 
@@ -49,10 +55,24 @@ const SignInForm = ({ onSubmit }) => {
       <Text style={{ color: 'red' }}>{formik.errors.password}</Text>
     )}
 
+    <TextInput
+      placeholder="confirm password"
+      placeholderTextColor="lightgray"
+      value={formik.values.passConf}
+      onChangeText={formik.handleChange('passConf')}
+      style={sx.textInput}
+      secureTextEntry
+    />
+
+    {formik.touched.passConf && formik.errors.passConf && (
+      <Text style={{ color: 'red' }}>{formik.errors.passConf}</Text>
+    )}
+
     <Pressable onPress={(e) =>
 
       !formik.errors.username &&
       !formik.errors.password &&
+      !formik.errors.passConf &&
 
       formik.handleSubmit(e)
 
@@ -60,11 +80,11 @@ const SignInForm = ({ onSubmit }) => {
       <Text color="white" bgColor="blue" button centered style={{
         padding: 15, flexGrow: 0
       }}>
-        Sign In
+        Sign Up
       </Text>
     </Pressable>
 
   </View >
 }
 
-export default SignInForm;
+export default Form;
