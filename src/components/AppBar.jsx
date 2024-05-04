@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
     gap: 5,
     justifyContent: 'space-evenly',
     flexGrow: 1
-
   },
 });
 
@@ -27,18 +26,18 @@ const AppBar = () => {
 
   const authStorage = useContext(AuthStorageContext);
 
-  const qry = useQuery(GET_ME);
+  const { data } = useQuery(GET_ME);
 
   useEffect(() => {
-    if (qry.data) {
-      if (qry.data.me === null) {
+    if (data) {
+      if (data.me === null) {
         setLoggedIn(false);
         return;
       }
 
       setLoggedIn(true);
     }
-  }, [qry.data])
+  }, [data])
 
   const handleLogout = async () => {
     await authStorage.removeAccessToken();
@@ -54,9 +53,29 @@ const AppBar = () => {
         </Text>
       </Link>
 
-      {!loggedIn
+      {loggedIn
 
         ? <>
+          <Link to="/create-review" >
+            <Text fontSize="subheading" fontWeight="bold" color="white">
+              Create a review
+            </Text>
+          </Link>
+
+          <Link to="/my-reviews" >
+            <Text fontSize="subheading" fontWeight="bold" color="white">
+              My reviews
+            </Text>
+          </Link>
+
+          <Pressable onPress={handleLogout}>
+            <Text fontSize="subheading" fontWeight="bold" color="white">
+              Sign Out
+            </Text>
+          </Pressable>
+        </>
+
+        : <>
           <Link to="/login">
             <Text fontSize="subheading" fontWeight="bold" color="white">
               Sign In
@@ -68,20 +87,6 @@ const AppBar = () => {
               Sign Up
             </Text>
           </Link>
-        </>
-
-        : <>
-          <Link to="/create-review" >
-            <Text fontSize="subheading" fontWeight="bold" color="white">
-              Create a review
-            </Text>
-          </Link>
-
-          <Pressable onPress={handleLogout}>
-            <Text fontSize="subheading" fontWeight="bold" color="white">
-              Sign Out
-            </Text>
-          </Pressable>
         </>
 
       }

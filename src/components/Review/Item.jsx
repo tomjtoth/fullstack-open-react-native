@@ -4,7 +4,7 @@ import Text from "../Text"
 import Row from '../Row'
 import Col from '../Col'
 
-const ReviewItem = ({ review: { text, rating, createdAt, user: { username } } }) => {
+const ReviewItem = ({ review: { repo = null, text, rating, createdAt, user: { username } } }) => {
   return <View style={{ padding: 5 }}>
     <Row>
       <View style={{
@@ -24,7 +24,7 @@ const ReviewItem = ({ review: { text, rating, createdAt, user: { username } } })
           color: 'blue', fontSize: 20, textAlign: 'center'
         }}>{rating}</Text></View>
       <Col>
-        <Text fontWeight="bold">{username}</Text>
+        <Text fontWeight="bold">{repo ? repo : username}</Text>
         <Text color="textSecondary">{format(new Date(createdAt), "d.M.yyyy")}</Text>
         <Text>{text}</Text>
       </Col>

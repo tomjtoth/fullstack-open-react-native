@@ -6,7 +6,7 @@ import { GET_REPOSITORIES } from '../graphql/queries'
 const useRepositories = (orderBy, orderDirection, searchKeyword) => {
   const [repositories, setRepositories] = useState([]);
 
-  const qry = useQuery(GET_REPOSITORIES, {
+  const { data, loading, error } = useQuery(GET_REPOSITORIES, {
     fetchPolicy: 'cache-and-network',
     variables: {
       orderBy,
@@ -16,15 +16,15 @@ const useRepositories = (orderBy, orderDirection, searchKeyword) => {
   });
 
   useEffect(() => {
-    if (qry.data) {
-      if (qry.data.repositories === null) return;
+    if (data) {
+      if (data.repositories === null) return;
 
-      setRepositories(qry.data.repositories.edges.map(edge => edge.node))
+      setRepositories(data.repositories.edges.map(edge => edge.node))
     }
-  }, [qry.data])
+  }, [data])
 
 
-  return { repositories, loading: qry.loading, error: qry.error, refetch: GET_REPOSITORIES };
+  return { repositories, loading, error, refetch: GET_REPOSITORIES };
 };
 
 export default useRepositories;

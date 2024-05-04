@@ -12,18 +12,18 @@ const ItemLoader = () => {
 
   const [repo, setRepo] = useState(null);
   const { repoId } = useParams()
-  const qry = useQuery(GET_REPO, {
+  const { data } = useQuery(GET_REPO, {
     variables: { id: repoId },
     fetchPolicy: 'cache-and-network',
   });
 
   useEffect(() => {
-    if (qry.data) {
-      if (qry.data.repository === null) return;
+    if (data) {
+      if (data.repository === null) return;
 
-      setRepo(qry.data.repository)
+      setRepo(data.repository)
     }
-  }, [qry.data])
+  }, [data])
 
   return repo
 
