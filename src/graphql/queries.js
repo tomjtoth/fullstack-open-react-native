@@ -33,6 +33,7 @@ export const GET_ME = gql`
             id
             repository {
               fullName
+              id
             }
             text
             rating

@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
   bgColorBlue: {
     backgroundColor: theme.colors.blue
   },
+  bgColorRed: {
+    backgroundColor: theme.colors.red
+  },
   fontSizeSubheading: {
     fontSize: theme.fontSizes.subheading,
   },
@@ -43,6 +46,7 @@ const Text = ({ color, bgColor, centered, button, fontSize, fontWeight, style, .
     color === 'primary' && styles.colorPrimary,
     color === 'white' && styles.colorWhite,
     bgColor === 'blue' && styles.bgColorBlue,
+    bgColor === 'red' && styles.bgColorRed,
     button && styles.button,
     centered && styles.centered,
     fontSize === 'subheading' && styles.fontSizeSubheading,

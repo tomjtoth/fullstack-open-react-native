@@ -12,7 +12,7 @@ import MyReviews from './Review/Myreviews';
 const Main = () => {
 
   return (
-    <View >
+    <View style={{ maxWidth: 1000 }}>
       <AppBar />
       <Routes>
         <Route path="/" element={<RepositoryList />} />

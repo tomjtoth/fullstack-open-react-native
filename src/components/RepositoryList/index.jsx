@@ -5,17 +5,15 @@ import RepositoryListContainer from './Container';
 import { Picker } from '@react-native-picker/picker';
 import { TextInput } from 'react-native';
 
-let debounceMyAss = 0;
-
 const RepositoryList = () => {
 
   const [crit, setCrit] = useState('CREATED_AT');
   const [dir, setDir] = useState('ASC');
   const [picker, setPicker] = useState('latest');
   const [filter, setFilter] = useState('');
-  const [value] = useDebounce(filter, 1000);
+  const [debouncedFilter] = useDebounce(filter, 1000);
 
-  const { repositories } = useRepositories(crit, dir, value);
+  const { repositories } = useRepositories(crit, dir, debouncedFilter);
 
   return <>
 

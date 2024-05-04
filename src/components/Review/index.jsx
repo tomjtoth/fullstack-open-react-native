@@ -5,7 +5,7 @@ import ReviewForm from './Form';
 import { CREATE_REVIEW } from '../../graphql/mutations';
 
 const Review = () => {
-  const [mutate] = useMutation(CREATE_REVIEW);
+  const [mutate] = useMutation(CREATE_REVIEW, { fetchPolicy: 'cache-and-network', });
   const navi = useNavigate();
 
   const onSubmit = ({ owner, repo, rating, review }) => {

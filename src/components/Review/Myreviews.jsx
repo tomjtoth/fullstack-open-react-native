@@ -8,15 +8,15 @@ import { GET_ME } from '../../graphql/queries'
 
 const MyReviews = () => {
   const [reviews, setReviews] = useState([])
-  const { data } = useQuery(GET_ME, { variables: { includeReviews: true } });
+  const { data, refetch: refetchReviews } = useQuery(GET_ME, { variables: { includeReviews: true } });
 
   useEffect(() => {
     if (data) {
       if (data.me === null) return;
 
       setReviews(data.me.reviews.edges.map(
-        ({ node: { id, repository: { fullName: repo }, text, rating, createdAt } }) =>
-          ({ id, text, rating, createdAt, user: { username: 'dummy' }, repo })
+        ({ node: { id, repository: { fullName: repoName, id: repoId }, text, rating, createdAt } }) =>
+          ({ id, text, rating, createdAt, user: { username: 'dummy' }, repoName, repoId })
       ))
     }
 
@@ -28,7 +28,7 @@ const MyReviews = () => {
     ? <FlatList
       data={reviews}
       ItemSeparatorComponent={ItemSeparator}
-      renderItem={({ item }) => <ReviewItem review={item} />}
+      renderItem={({ item }) => <ReviewItem review={{ ...item, refetchReviews }} />}
       keyExtractor={({ id }) => id}
     />
 
